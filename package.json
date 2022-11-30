@@ -8,10 +8,10 @@
   "scripts": {
     "startDay": "node scripts/createNewDay.js"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
+    "argparse": "^2.0.1",
     "dotenv": "^16.0.3",
-    "argparse": "^2.0.1"
+    "node-fetch": "^2.6.6"
   }
 }
