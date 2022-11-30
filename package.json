@@ -9,6 +9,9 @@
     "startDay": "node scripts/createNewDay.js"
   },
   "devDependencies": {
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
     "argparse": "^2.0.1"
   }
 }
