@@ -25,6 +25,7 @@ parser.add_argument(
 const { year, day } = parser.parse_args()
 
 fs.access(`${__dirname}/../${year}`, fs.constants.F_OK)
-  .catch(() => fs.mkdir(`${__dirname}/../${year}`))
+  .then(() => fs.copyFile(`${__dirname}/../templates/dayTemplate.js`, `${__dirname}/../${year}/${day.padStart(2, 0)}.js`))
+  .catch((e) => fs.mkdir(`${__dirname}/../${year}`))
 
 
