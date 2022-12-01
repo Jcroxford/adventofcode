@@ -6,7 +6,8 @@
   "author": "Jcroxford <takeflightsc@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "startDay": "node scripts/createNewDay.js"
+    "startDay": "node scripts/createNewDay.js",
+    "solve": "node scripts/solve.js"
   },
   "devDependencies": {},
   "dependencies": {
