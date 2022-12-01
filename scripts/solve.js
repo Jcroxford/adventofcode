@@ -2,6 +2,7 @@ require('dotenv').config()
 const { ArgumentParser } = require('argparse')
 const fs = require('node:fs')
 const { Client } = require('../lib/client.js')
+const chalk = require('chalk')
 
 const parser = new ArgumentParser({
   description: `Run a given year & day's solutions tests and full input.`
@@ -29,6 +30,35 @@ const paddedDay = day.padStart(2, 0)
 
 const solver = require(`${__dirname}/../${year}/${paddedDay}/index.js`)
 const rawInput = fs.readFileSync(`${__dirname}/../${year}/${paddedDay}/input.txt`, 'utf-8')
-console.log('rawInput: ', rawInput);
 
+console.log(chalk.cyan(`================================= AOC ${year} day ${paddedDay} =================================`))
 
+runSolverFor('part1', solver)
+runSolverFor('part2', solver)
+
+console.log(chalk.cyan(`===================================================================================`))
+
+function runSolverFor(part, solver) {
+  console.log(chalk.bold(`\nRunning ${part} tests`))
+  const testsFailed = solver[part].tests
+    .filter((test, i) => {
+      const output = solver[part].cb(test.input)
+
+      if(output == test.expectedOutput) {
+        console.log(chalk.green(`test ${i+1} passed!\n`))
+        return false
+      }
+      else {
+        console.log(chalk.red(chalk.bold(`test ${i+1} failed`)))
+        console.log(chalk.green(`expected ${test.expectedOutput}`))
+        console.log(chalk.red(`actual ${output}\n`))
+        return true
+      }
+    })
+
+  if (!testsFailed || solver.testsOnly) return console.log(chalk.bold(`\nSkipping real input\n`))
+
+  console.log(chalk.bold(`Running real input`))
+  const output = solver[part].cb(rawInput)
+  console.log(chalk.bold(`\nSolution`), `${output}\n`)
+}
