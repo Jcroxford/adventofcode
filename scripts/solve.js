@@ -3,6 +3,7 @@ const { ArgumentParser } = require('argparse')
 const fs = require('node:fs')
 const { Client } = require('../lib/client.js')
 const chalk = require('chalk')
+const { stripIndent } = require('common-tags')
 
 const parser = new ArgumentParser({
   description: `Run a given year & day's solutions tests and full input.`
@@ -42,7 +43,7 @@ function runSolverFor(part, solver) {
   console.log(chalk.bold(`\nRunning ${part} tests`))
   const testsFailed = solver[part].tests
     .filter((test, i) => {
-      const output = solver[part].cb(test.input)
+      const output = solver[part].cb(stripIndent(test.input))
 
       if(output == test.expectedOutput) {
         console.log(chalk.green(`test ${i+1} passed!\n`))

@@ -5,7 +5,6 @@ const parseInput = cb => R.pipe(
   R.split('\n\n'),
   R.map(
     R.pipe(
-      R.replace(' ', ''),
       R.split('\n'),
       R.map(Number)
     ),
@@ -66,7 +65,8 @@ module.exports = {
     cb: parseInput(part1),
     tests: [
       {
-        input: `1000
+        input: `
+        1000
         2000
         3000
 
@@ -88,7 +88,8 @@ module.exports = {
     cb: parseInput(part2),
     tests: [
       {
-        input: `1000
+        input: `
+        1000
         2000
         3000
 
