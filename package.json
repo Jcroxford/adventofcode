@@ -1,5 +1,8 @@
 {
   "name": "adventofcode",
+  "engines": {
+    "node": ">=18.12.1"
+  },
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:Jcroxford/adventofcode.git",
