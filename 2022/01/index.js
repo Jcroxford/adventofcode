@@ -1,24 +1,65 @@
-function parseInput(cb) {
-  return function(rawInput) {
-    const input = rawInput.split('\n\n').map(r => r.split('\n').map(c => c.trim()).map(Number))
+const R = require('ramda')
+const { hightToLow } = require('../../utils')
 
-    return cb(input)
-  }
-}
+const parseInput = cb => R.pipe(
+  R.split('\n\n'),
+  R.map(
+    R.pipe(
+      R.replace(' ', ''),
+      R.split('\n'),
+      R.map(Number)
+    ),
+  ),
+  cb
+)
 
-function part1(input) {
-  return input
-    .map(r => r.reduce((total, next) => total + next, 0))
-    .sort((low, high) => high - low)[0]
-}
+const sumInventoryAndSort = R.pipe(
+  R.map(R.sum),
+  R.sort(hightToLow)
+)
 
-function part2(input) {
-  return input
-    .map(r => r.reduce((total, next) => total + next, 0))
-    .sort((low, high) => high - low)
-    .slice(0,3)
-    .reduce((total, next) => total + next, 0)
-}
+const part1 = R.pipe(
+  sumInventoryAndSort,
+  R.take(1)
+)
+
+const part2 = R.pipe(
+  sumInventoryAndSort,
+  R.take(3),
+  R.sum
+)
+
+
+// ==============================
+// first attempt
+// ==============================
+// function parseInput(cb) {
+//   return function(rawInput) {
+//     const input = rawInput
+//       .split('\n\n')
+//       .map(r => r
+//         .split('\n')
+//         .map(c => c.trim())
+//         .map(Number)
+//       )
+
+//     return cb(input)
+//   }
+// }
+
+// function part1(input) {
+//   return input
+//     .map(r => r.reduce((total, next) => total + next, 0))
+//     .sort((low, high) => high - low)[0]
+// }
+
+// function part2(input) {
+//   return input
+//     .map(r => r.reduce((total, next) => total + next, 0))
+//     .sort((low, high) => high - low)
+//     .slice(0,3)
+//     .reduce((total, next) => total + next, 0)
+// }
 
 module.exports = {
   part1: {
