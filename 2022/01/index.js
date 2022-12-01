@@ -1,5 +1,5 @@
 const R = require('ramda')
-const { hightToLow } = require('../../utils')
+const { highToLow } = require('../../utils')
 
 const parseInput = cb => R.pipe(
   R.split('\n\n'),
@@ -14,7 +14,7 @@ const parseInput = cb => R.pipe(
 
 const sumInventoryAndSort = R.pipe(
   R.map(R.sum),
-  R.sort(hightToLow)
+  R.sort(highToLow)
 )
 
 const part1 = R.pipe(
