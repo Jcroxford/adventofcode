@@ -23,11 +23,10 @@ function part1(input) {
     const oppenentVal = options[opponentChoice]
     const myVal = options[myChoice]
 
-    if(oppenentVal == myVal) return total + 3 + myVal // draw
-    if(oppenentVal == 3 && myVal == 1) return total + 6 + myVal // edge case win with rock against scissors
-    if(oppenentVal == 1 && myVal == 3) return total + myVal // edge case lose with scissors against rock
-    if(oppenentVal > myVal) return total + myVal // I lose
-    if(oppenentVal < myVal) return total + 6 + myVal // I win
+    if(oppenentVal == myVal) total += 3 // draw
+    if(oppenentVal < myVal || (oppenentVal == 3 && myVal == 1)) total += 6 // win & edge case win with rock vs scissors
+
+    return total + myVal
   },0)
 }
 
