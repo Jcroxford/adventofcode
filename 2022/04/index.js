@@ -23,7 +23,6 @@ const parseInput = cb => R.pipe(
 
 const part1 = R.pipe(
   R.map(([ first, second ]) => [ first, second, R.intersection(first, second) ]),
-  // R.tap(console.log),
   R.filter(([ first, second, intersect ]) => R.or(R.equals(first, intersect), R.equals(second, intersect))),
   R.length
 )
