@@ -28,7 +28,7 @@ const part1 = R.pipe(
 )
 
 const part2 = R.pipe(
-  R.map(([ first, second ]) => R.innerJoin(R.equals,first, second)),
+  R.map(([ first, second ]) => R.innerJoin(R.equals, first, second)),
   R.filter(R.length),
   R.length
 )
