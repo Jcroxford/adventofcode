@@ -83,5 +83,6 @@ module.exports = {
       }
     ]
   },
-  testsOnly: false
+  testsOnly: false,
+  trimpInput: true
 }
