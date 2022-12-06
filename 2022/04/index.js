@@ -15,20 +15,20 @@ const parseInput = cb => R.pipe(
           R.map(Number)
         )
       ),
-      R.map(([start, stop]) => R.range(start, stop+1))
-    ),
+      R.map(([start, stop]) => R.range(start, stop + 1))
+    )
   ),
   cb
 )
 
 const part1 = R.pipe(
-  R.map(([ first, second ]) => [ first, second, R.intersection(first, second) ]),
-  R.filter(([ first, second, intersect ]) => R.or(R.equals(first, intersect), R.equals(second, intersect))),
+  R.map(([first, second]) => [first, second, R.intersection(first, second)]),
+  R.filter(([first, second, intersect]) => R.or(R.equals(first, intersect), R.equals(second, intersect))),
   R.length
 )
 
 const part2 = R.pipe(
-  R.map(([ first, second ]) => R.innerJoin(R.equals, first, second)),
+  R.map(([first, second]) => R.innerJoin(R.equals, first, second)),
   R.filter(R.length),
   R.length
 )
@@ -36,41 +36,41 @@ const part2 = R.pipe(
 // ==============================
 // first attempt
 // ==============================
-function parseInput(cb) {
-  return function(rawInput) {
-    const input = rawInput
-      .trim()
-      .split('\n')
-      .map(r => r.split(',').map(e => e.split('-').map(Number)))
+// function parseInput(cb) {
+//   return function(rawInput) {
+//     const input = rawInput
+//       .trim()
+//       .split('\n')
+//       .map(r => r.split(',').map(e => e.split('-').map(Number)))
 
-    return cb(input)
-  }
-}
+//     return cb(input)
+//   }
+// }
 
-function part1(input) {
-  console.log('input: ', input);
+// function part1(input) {
+//   console.log('input: ', input);
 
-  const result = input
-    .filter(([first, second]) => {
-      if(first[0] >= second[0] && first[1] <= second[1]) return true
-      if(first[0] <= second[0] && first[1] >= second[1]) return true
-      return false
-    })
+//   const result = input
+//     .filter(([first, second]) => {
+//       if(first[0] >= second[0] && first[1] <= second[1]) return true
+//       if(first[0] <= second[0] && first[1] >= second[1]) return true
+//       return false
+//     })
 
-  return result.length
-}
+//   return result.length
+// }
 
-function part2(input) {
-  const result = input
-    .filter(([first, second]) => {
-      if(first[0] >= second[0] && first[1] <= second[1]) return true
-      if(first[0] <= second[0] && first[1] >= second[1]) return true
-      if(first[1] >= second[0] && first[0] <= second[0]) return true
-      if(second[1] >= first[0] && second[0] <= first[0]) return true
-      return false
-    })
-  return result.length
-}
+// function part2(input) {
+//   const result = input
+//     .filter(([first, second]) => {
+//       if(first[0] >= second[0] && first[1] <= second[1]) return true
+//       if(first[0] <= second[0] && first[1] >= second[1]) return true
+//       if(first[1] >= second[0] && first[0] <= second[0]) return true
+//       if(second[1] >= first[0] && second[0] <= first[0]) return true
+//       return false
+//     })
+//   return result.length
+// }
 
 module.exports = {
   part1: {

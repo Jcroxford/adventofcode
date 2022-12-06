@@ -1,25 +1,25 @@
 const _ = require('lodash')
 
-function parseInput(cb) {
-  return function(rawInput) {
+function parseInput (cb) {
+  return function (rawInput) {
     const input = rawInput.split('')
 
     return cb(input)
   }
 }
 
-function findStartMarker(markerLength = 4) {
-  return function(input) {
+function findStartMarker (markerLength = 4) {
+  return function (input) {
     const list = []
     for (let i = 0; i < input.length; i++) {
       const letter = input[i]
 
       list.push(letter)
-      if(list.length < markerLength) {
+      if (list.length < markerLength) {
         continue
       }
 
-      if(_.uniq(list).length == markerLength) return i+1
+      if (_.uniq(list).length === markerLength) return i + 1
       list.shift()
     }
   }
@@ -33,7 +33,7 @@ module.exports = {
     cb: parseInput(part1),
     tests: [
       {
-        input: `mjqjpqmgbljsphdztnvjfqwrcgsmlb`,
+        input: 'mjqjpqmgbljsphdztnvjfqwrcgsmlb',
         expectedOutput: '7'
       }
     ]
@@ -42,7 +42,7 @@ module.exports = {
     cb: parseInput(part2),
     tests: [
       {
-        input: `mjqjpqmgbljsphdztnvjfqwrcgsmlb`,
+        input: 'mjqjpqmgbljsphdztnvjfqwrcgsmlb',
         expectedOutput: '19'
       }
     ]

@@ -1,8 +1,8 @@
 const _ = require('lodash')
 
-function parseInput(cb) {
-  return function(rawInput) {
-    let [ start, instructions ] = rawInput
+function parseInput (cb) {
+  return function (rawInput) {
+    let [start, instructions] = rawInput
       .split('\n\n')
 
     start = start
@@ -11,10 +11,10 @@ function parseInput(cb) {
       .reverse()
       .reduce((hash, row, i) => {
         // { '1': [], '2': [], ... }
-        if(i == 0) return row.reduce((hash, next) => ({ ...hash, [next]: [] }), {})
+        if (i === 0) return row.reduce((hash, next) => ({ ...hash, [next]: [] }), {})
 
         // { '1': ['Z', 'N'], '2': ['M', 'C', 'D'], ... }
-        row.forEach((item, i) => item == ' ' ? hash : hash[`${i+1}`].push(item))
+        row.forEach((item, i) => item === ' ' ? hash : hash[`${i + 1}`].push(item))
         return hash
       }, {})
 
@@ -27,11 +27,11 @@ function parseInput(cb) {
   }
 }
 
-function solver(lifo = true) {
-  return function({ start, instructions }) {
-    instructions.forEach(([ move, from, to ]) => {
+function solver (lifo = true) {
+  return function ({ start, instructions }) {
+    instructions.forEach(([move, from, to]) => {
       let chunk = start[from].splice(-move)
-      if(lifo) chunk = chunk.reverse()
+      if (lifo) chunk = chunk.reverse()
       start[to].push(...chunk)
     })
 

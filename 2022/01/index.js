@@ -7,7 +7,7 @@ const parseInput = cb => R.pipe(
     R.pipe(
       R.split('\n'),
       R.map(Number)
-    ),
+    )
   ),
   cb
 )
@@ -31,37 +31,36 @@ const part2 = R.pipe(
   R.sum
 )
 
-
 // ==============================
 // first attempt
 // ==============================
-function parseInput(cb) {
-  return function(rawInput) {
-    const input = rawInput
-      .split('\n\n')
-      .map(r => r
-        .split('\n')
-        .map(c => c.trim())
-        .map(Number)
-      )
+// function parseInput(cb) {
+//   return function(rawInput) {
+//     const input = rawInput
+//       .split('\n\n')
+//       .map(r => r
+//         .split('\n')
+//         .map(c => c.trim())
+//         .map(Number)
+//       )
 
-    return cb(input)
-  }
-}
+//     return cb(input)
+//   }
+// }
 
-function part1(input) {
-  return input
-    .map(r => r.reduce((total, next) => total + next, 0))
-    .sort((low, high) => high - low)[0]
-}
+// function part1(input) {
+//   return input
+//     .map(r => r.reduce((total, next) => total + next, 0))
+//     .sort((low, high) => high - low)[0]
+// }
 
-function part2(input) {
-  return input
-    .map(r => r.reduce((total, next) => total + next, 0))
-    .sort((low, high) => high - low)
-    .slice(0,3)
-    .reduce((total, next) => total + next, 0)
-}
+// function part2(input) {
+//   return input
+//     .map(r => r.reduce((total, next) => total + next, 0))
+//     .sort((low, high) => high - low)
+//     .slice(0,3)
+//     .reduce((total, next) => total + next, 0)
+// }
 
 module.exports = {
   part1: {
