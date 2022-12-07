@@ -1,3 +1,4 @@
 module.exports = {
-  highToLow: (low, high) => high - low
+  highToLow: (low, high) => high - low,
+  lowToHight: (low, high) => low - high
 }
