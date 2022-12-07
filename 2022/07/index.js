@@ -1,4 +1,4 @@
-const { lowToHight } = require('../../utils/index')
+const { lowToHigh } = require('../../utils/index')
 
 function parseInput (cb) {
   return function (rawInput) {
@@ -31,7 +31,7 @@ function part2 (input) {
   const totalDiskSpace = 70000000
   const totalUnusedSpace = totalDiskSpace - root.folderSize
   const requiredSpace = 30000000 - totalUnusedSpace
-  return findAllBigFolders(root, requiredSpace).sort(lowToHight)[0]
+  return findAllBigFolders(root, requiredSpace).sort(lowToHigh)[0]
 }
 
 function findAllBigFolders (currentDir, requiredSpace = Infinity) {
