@@ -12,11 +12,11 @@ function parseInput (cb) {
 
 function part1 (grid) {
   return grid.reduce((rTotal, row, r) => (
-    rTotal + row.reduce((cTotal, col, c) => cTotal + visableFromSomeOuterEdge(grid, r, c), 0)
+    rTotal + row.reduce((cTotal, col, c) => cTotal + visibleFromSomeOuterEdge(grid, r, c), 0)
   ), 0)
 }
 
-function visableFromSomeOuterEdge (grid, rowIndex, colIndex) {
+function visibleFromSomeOuterEdge (grid, rowIndex, colIndex) {
   const row = grid[rowIndex]
   const treeHeight = grid[rowIndex][colIndex]
   let visibleLeft = true
