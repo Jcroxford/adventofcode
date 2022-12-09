@@ -1,16 +1,16 @@
-function parseInput(cb) {
-  return function(rawInput) {
+function parseInput (cb) {
+  return function (rawInput) {
     const input = rawInput
 
     return cb(input)
   }
 }
 
-function part1(input) {
+function part1 (input) {
 
 }
 
-function part2(input) {
+function part2 (input) {
 
 }
 
@@ -34,5 +34,5 @@ module.exports = {
     ]
   },
   testsOnly: true,
-  trimpInput: false
+  trimpInput: true
 }
