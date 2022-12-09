@@ -41,21 +41,21 @@ function run (size = 2) {
   }
 }
 
-function moveKnot (head, tail) {
-  if (Math.abs(head.x - tail.x) <= 1 && Math.abs(head.y - tail.y) <= 1) return
+function moveKnot (tail, head) {
+  if (Math.abs(tail.x - head.x) <= 1 && Math.abs(tail.y - head.y) <= 1) return
 
-  if (head.x === tail.x) { // vertical move
-    if (head.y > tail.y) tail.y++
-    else tail.y--
-  } else if (head.y === tail.y) { // horizontal move
-    if (head.x > tail.x) tail.x++
-    else tail.x--
+  if (tail.x === head.x) { // vertical move
+    if (tail.y > head.y) head.y++
+    else head.y--
+  } else if (tail.y === head.y) { // horizontal move
+    if (tail.x > head.x) head.x++
+    else head.x--
   } else {
     // diagonal move
-    if (head.x > tail.x) tail.x++
-    else tail.x--
-    if (head.y > tail.y) tail.y++
-    else tail.y--
+    if (tail.x > head.x) head.x++
+    else head.x--
+    if (tail.y > head.y) head.y++
+    else head.y--
   }
 }
 
