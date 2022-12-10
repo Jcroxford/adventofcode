@@ -6,7 +6,7 @@ const chalk = require('chalk')
 const { stripIndent } = require('common-tags')
 
 const parser = new ArgumentParser({
-  description: `Run a given year & day's solutions tests and full input.`
+  description: 'Run a given year & day\'s solutions tests and full input.'
 })
 
 parser.add_argument(
@@ -37,29 +37,29 @@ console.log(chalk.cyan(`================================= AOC ${year} day ${padd
 runSolverFor('part1', solver)
 runSolverFor('part2', solver)
 
-console.log(chalk.cyan(`===================================================================================`))
+console.log(chalk.cyan('==================================================================================='))
 
-function runSolverFor(part, solver) {
+function runSolverFor (part, solver) {
   console.log(chalk.bold(`\nRunning ${part} tests`))
   const testsFailed = solver[part].tests
     .filter((test, i) => {
       const output = solver.trimpInput ? solver[part].cb(stripIndent(test.input)) : solver[part].cb(test.input)
 
-      if(output == test.expectedOutput) {
-        console.log(chalk.green(`test ${i+1} passed!\n`))
+      // eslint-disable-next-line
+      if (output == test.expectedOutput) {
+        console.log(chalk.green(`test ${i + 1} passed!\n`))
         return false
-      }
-      else {
-        console.log(chalk.red(chalk.bold(`test ${i+1} failed`)))
+      } else {
+        console.log(chalk.red(chalk.bold(`test ${i + 1} failed`)))
         console.log(chalk.green(`expected ${test.expectedOutput}`))
         console.log(chalk.red(`actual ${output}\n`))
         return true
       }
     })
 
-  if (!testsFailed || solver.testsOnly) return console.log(chalk.bold(`\nSkipping real input\n`))
+  if (!testsFailed || solver.testsOnly) return console.log(chalk.bold('\nSkipping real input\n'))
 
-  console.log(chalk.bold(`Running real input`))
+  console.log(chalk.bold('Running real input'))
   const output = solver[part].cb(rawInput)
-  console.log(chalk.bold(`\nSolution`), `${output}\n`)
+  console.log(chalk.bold('\nSolution'), `${output}\n`)
 }
