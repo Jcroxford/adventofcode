@@ -12,7 +12,6 @@ const parseInput = cb => R.pipe(
 function part1 (input) {
   return input.reduce((total, pair, i) => {
     const result = comparePairs(...pair)
-    // console.log('result: ', result);
     return result === resultsOptions.inOrder ? total + i + 1 : total
   }, 0)
 }
