@@ -3,9 +3,13 @@ const R = require('ramda')
 const parseInput = cb => R.pipe(
   R.trim,
   R.split('\n'),
-  R.map(eval), // eslint-disable-line
   R.splitEvery(3),
-  R.map(R.slice(0, 2)),
+  R.map(
+    R.pipe(
+      R.slice(0, 2),
+      R.map(JSON.parse)
+    )
+  ),
   cb
 )
 
